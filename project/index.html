@@ -9,102 +9,147 @@
 
 <style>
 html { scroll-behavior: smooth; }
+.mobile-menu { display: none; }
+.mobile-menu.active { display: block; }
 </style>
 
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="bg-slate-50 font-sans">
 
 <!-- 🔥 Navbar -->
-<nav class="bg-black text-white p-4 flex justify-between sticky top-0">
-  <h1 class="text-xl font-bold">Ishan13 Websites</h1>
-  <div class="space-x-4">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
+<nav class="bg-slate-900/95 backdrop-blur-md text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+  <h1 class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">Ishan13 Websites</h1>
+  
+  <!-- Desktop Menu -->
+  <div class="hidden md:flex space-x-6">
+    <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
+    <a href="about.html" class="hover:text-indigo-400 transition">About</a>
+    <a href="services.html" class="hover:text-indigo-400 transition">Services</a>
+    <a href="gallery.html" class="hover:text-indigo-400 transition">Gallery</a>
+    <a href="contact.html" class="hover:text-indigo-400 transition">Contact</a>
   </div>
+  
+  <!-- Mobile Menu Button -->
+  <button id="menuBtn" class="md:hidden p-2">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
 </nav>
 
-<!-- 🔥 Hero -->
-<section id="home" class="text-center py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-  <h2 class="text-4xl font-bold">Build Your Business Online 🚀</h2>
-  <p class="mt-4">Premium Website Solutions for Growth</p>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu bg-slate-900 text-white p-4 md:hidden">
+  <a href="index.html" class="block py-2 hover:text-indigo-400">Home</a>
+  <a href="about.html" class="block py-2 hover:text-indigo-400">About</a>
+  <a href="services.html" class="block py-2 hover:text-indigo-400">Services</a>
+  <a href="gallery.html" class="block py-2 hover:text-indigo-400">Gallery</a>
+  <a href="contact.html" class="block py-2 hover:text-indigo-400">Contact</a>
+</div>
 
-  <div class="mt-6">
-    <a href="https://wa.me/918874458875" class="bg-green-500 px-6 py-2 rounded">WhatsApp</a>
-    <a href="tel:8874458875" class="bg-white text-black px-6 py-2 rounded ml-2">Call</a>
+<!-- 🔥 Hero -->
+<section id="home" class="text-center py-16 md:py-24 bg-gradient-to-br from-slate-900 via-indigo-900 to-violet-900 text-white">
+  <h2 class="text-3xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 via-violet-400 to-emerald-400 bg-clip-text text-transparent">Build Your Business Online 🚀</h2>
+  <p class="mt-4 text-slate-300 text-lg">Premium Website Solutions for Growth</p>
+
+  <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4 px-4">
+    <a href="https://wa.me/918874458875" class="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-lg font-medium transition shadow-lg shadow-emerald-500/30">WhatsApp</a>
+    <a href="tel:8874458875" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-lg font-medium transition border border-white/30">Call Now</a>
   </div>
 </section>
 
 <!-- 🔥 Services -->
-<section id="services" class="py-16 text-center">
-  <h2 class="text-3xl font-bold mb-8">Our Services</h2>
+<section id="services" class="py-12 md:py-20 text-center">
+  <h2 class="text-2xl md:text-4xl font-bold mb-8 text-slate-800">Our Services</h2>
 
-  <div class="grid md:grid-cols-3 gap-6 px-6">
-    <div class="bg-white p-6 shadow rounded hover:scale-105 transition">
-      <h3 class="font-bold">Website Design</h3>
-      <p>Modern UI with fast performance</p>
+  <div class="grid md:grid-cols-3 gap-6 px-4 md:px-8 max-w-6xl mx-auto">
+    <div class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition border border-slate-100">
+      <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+      </div>
+      <h3 class="font-bold text-slate-800 text-lg">Website Design</h3>
+      <p class="text-slate-600 mt-2">Modern UI with fast performance</p>
     </div>
 
-    <div class="bg-white p-6 shadow rounded hover:scale-105 transition">
-      <h3 class="font-bold">SEO Optimization</h3>
-      <p>Rank higher on Google</p>
+    <div class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition border border-slate-100">
+      <div class="w-12 h-12 bg-violet-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+        </svg>
+      </div>
+      <h3 class="font-bold text-slate-800 text-lg">SEO Optimization</h3>
+      <p class="text-slate-600 mt-2">Rank higher on Google</p>
     </div>
 
-    <div class="bg-white p-6 shadow rounded hover:scale-105 transition">
-      <h3 class="font-bold">Maintenance</h3>
-      <p>Monthly updates & support</p>
+    <div class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition border border-slate-100">
+      <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+      </div>
+      <h3 class="font-bold text-slate-800 text-lg">Maintenance</h3>
+      <p class="text-slate-600 mt-2">Monthly updates & support</p>
     </div>
   </div>
 </section>
 
 <!-- 🔥 Gallery -->
-<section id="gallery" class="py-16 bg-white text-center">
-  <h2 class="text-3xl font-bold mb-8">Gallery</h2>
+<section id="gallery" class="py-12 md:py-20 bg-white text-center">
+  <h2 class="text-2xl md:text-4xl font-bold mb-8 text-slate-800">Gallery</h2>
 
-  <div class="grid md:grid-cols-3 gap-4 px-6">
-    <img src="assets/images/img1.jpg" class="rounded shadow w-full h-64 object-cover">
-    <img src="assets/images/img2.jpg" class="rounded shadow w-full h-64 object-cover">
-    <img src="assets/images/img3.jpg" class="rounded shadow w-full h-64 object-cover">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 px-4 md:px-8 max-w-6xl mx-auto">
+    <img src="assets/images/img1.jpg" class="rounded-xl shadow-lg w-full h-48 sm:h-64 object-cover hover:shadow-xl transition">
+    <img src="assets/images/img2.jpg" class="rounded-xl shadow-lg w-full h-48 sm:h-64 object-cover hover:shadow-xl transition">
+    <img src="assets/images/img3.jpg" class="rounded-xl shadow-lg w-full h-48 sm:h-64 object-cover hover:shadow-xl transition">
   </div>
 </section>
 
 <!-- 🔥 Testimonials -->
-<section class="py-16 text-center">
-  <h2 class="text-3xl font-bold mb-8">What Clients Say</h2>
+<section class="py-12 md:py-20 text-center bg-gradient-to-b from-slate-50 to-slate-100">
+  <h2 class="text-2xl md:text-4xl font-bold mb-8 text-slate-800">What Clients Say</h2>
 
-  <div class="grid md:grid-cols-2 gap-6 px-6">
-    <div class="bg-white p-6 shadow rounded">
-      <p>“Best website service, highly recommended!”</p>
-      <h4 class="mt-2 font-bold">– Client 1</h4>
+  <div class="grid md:grid-cols-2 gap-6 px-4 md:px-8 max-w-4xl mx-auto">
+    <div class="bg-white/90 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-lg border border-slate-100">
+      <svg class="w-8 h-8 text-indigo-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+      </svg>
+      <p class="text-slate-600 italic">"Best website service, highly recommended!"</p>
+      <h4 class="mt-4 font-bold text-indigo-600">– Client 1</h4>
     </div>
 
-    <div class="bg-white p-6 shadow rounded">
-      <p>“Affordable and professional work.”</p>
-      <h4 class="mt-2 font-bold">– Client 2</h4>
+    <div class="bg-white/90 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-lg border border-slate-100">
+      <svg class="w-8 h-8 text-violet-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+      </svg>
+      <p class="text-slate-600 italic">"Affordable and professional work."</p>
+      <h4 class="mt-4 font-bold text-violet-600">– Client 2</h4>
     </div>
   </div>
 </section>
 
 <!-- 🔥 Contact -->
-<section id="contact" class="py-16 bg-gray-200 text-center">
-  <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+<section id="contact" class="py-12 md:py-20 bg-gradient-to-br from-slate-100 to-slate-200 text-center">
+  <h2 class="text-2xl md:text-4xl font-bold mb-6 text-slate-800">Contact Us</h2>
 
   <!-- Form -->
-  <form onsubmit="sendMessage(event)" class="max-w-md mx-auto">
-    <input type="text" id="name" placeholder="Your Name" class="w-full p-2 mb-3 border">
-    <input type="text" id="message" placeholder="Your Message" class="w-full p-2 mb-3 border">
+  <form onsubmit="sendMessage(event)" class="max-w-md mx-auto px-4">
+    <input type="text" id="name" placeholder="Your Name" class="w-full p-3 mb-4 rounded-lg border border-slate-300 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 bg-white/80 backdrop-blur-sm">
+    <input type="text" id="message" placeholder="Your Message" class="w-full p-3 mb-4 rounded-lg border border-slate-300 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 bg-white/80 backdrop-blur-sm">
 
-    <button class="bg-blue-600 text-white px-6 py-2 rounded">
-      Send
+    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-lg font-medium transition shadow-lg shadow-indigo-500/30">
+      Send Message
     </button>
   </form>
 
   <!-- WhatsApp -->
-  <div class="mt-6">
-    <a href="https://wa.me/918874458875" class="bg-green-500 text-white px-6 py-2 rounded">
+  <div class="mt-8">
+    <a href="https://wa.me/918874458875" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg font-medium transition shadow-lg shadow-emerald-500/30">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/>
+      </svg>
       WhatsApp Direct
     </a>
   </div>
@@ -119,8 +164,8 @@ html { scroll-behavior: smooth; }
 </section>
 
 <!-- 🔥 Footer -->
-<footer class="bg-black text-white text-center p-4">
-  <p>© 2026 Ishan13 Websites</p>
+<footer class="bg-slate-900 text-white text-center p-6">
+  <p class="text-slate-400"> 2026 Ishan13 Websites</p>
 </footer>
 
 <!-- 🔥 JS -->
@@ -137,6 +182,14 @@ function sendMessage(e){
 
   window.open(url, '_blank');
 }
+
+// Mobile Menu Toggle
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+});
 </script>
 
 </body>
