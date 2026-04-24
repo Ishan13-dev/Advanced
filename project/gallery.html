@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - Demo Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+.mobile-menu { display: none; }
+.mobile-menu.active { display: block; }
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
+</style>
+</head>
+
+<body class="bg-slate-50 font-sans">
+
+<!-- 🔥 Navbar -->
+<nav class="bg-slate-900/95 backdrop-blur-md text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+  <h1 class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">Ishan13 Websites</h1>
+  
+  <!-- Desktop Menu -->
+  <div class="hidden md:flex space-x-6">
+    <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
+    <a href="about.html" class="hover:text-indigo-400 transition">About</a>
+    <a href="services.html" class="hover:text-indigo-400 transition">Services</a>
+    <a href="gallery.html" class="hover:text-indigo-400 transition">Gallery</a>
+    <a href="contact.html" class="hover:text-indigo-400 transition">Contact</a>
+  </div>
+  
+  <!-- Mobile Menu Button -->
+  <button id="menuBtn" class="md:hidden p-2">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu bg-slate-900 text-white p-4 md:hidden">
+  <a href="index.html" class="block py-2 hover:text-indigo-400">Home</a>
+  <a href="about.html" class="block py-2 hover:text-indigo-400">About</a>
+  <a href="services.html" class="block py-2 hover:text-indigo-400">Services</a>
+  <a href="gallery.html" class="block py-2 hover:text-indigo-400">Gallery</a>
+  <a href="contact.html" class="block py-2 hover:text-indigo-400">Contact</a>
+</div>
+
+<!-- 🔥 Gallery Hero -->
+<section class="text-center py-16 md:py-24 bg-gradient-to-br from-slate-900 via-indigo-900 to-violet-900 text-white">
+  <h2 class="text-3xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 via-violet-400 to-emerald-400 bg-clip-text text-transparent">Client Portfolio</h2>
+  <p class="mt-4 text-slate-300 text-lg max-w-2xl mx-auto px-4">Showcasing our best work - from business websites to e-commerce solutions</p>
+</section>
+
+<!-- 🔥 Demo Gallery Categories -->
+<section class="py-12 md:py-16 px-4">
+  <div class="flex flex-wrap justify-center gap-3 mb-10">
+    <button class="gallery-filter active px-4 py-2 rounded-full bg-indigo-600 text-white text-sm font-medium transition" data-filter="all">All</button>
+    <button class="gallery-filter px-4 py-2 rounded-full bg-white text-slate-700 border border-slate-200 text-sm font-medium hover:bg-indigo-50 transition" data-filter="business">Business</button>
+    <button class="gallery-filter px-4 py-2 rounded-full bg-white text-slate-700 border border-slate-200 text-sm font-medium hover:bg-indigo-50 transition" data-filter="ecommerce">E-Commerce</button>
+    <button class="gallery-filter px-4 py-2 rounded-full bg-white text-slate-700 border border-slate-200 text-sm font-medium hover:bg-indigo-50 transition" data-filter="portfolio">Portfolio</button>
+  </div>
+</section>
+
+<!-- 🔥 Gallery Grid -->
+<section class="pb-16 md:pb-24 px-4 md:px-8 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+    <!-- Demo Item 1 -->
+    <div class="gallery-item business group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800')">
+      <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400" alt="Business Website Demo" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+          <div>
+            <h4 class="text-white font-bold">Business Pro</h4>
+            <p class="text-slate-300 text-sm">Corporate Website</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Item 2 -->
+    <div class="gallery-item ecommerce group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800')">
+      <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400" alt="E-Commerce Demo" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+          <div>
+            <h4 class="text-white font-bold">Shopify Store</h4>
+            <p class="text-slate-300 text-sm">E-Commerce Platform</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Item 3 -->
+    <div class="gallery-item portfolio group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800')">
+      <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400" alt="Portfolio Demo" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+          <div>
+            <h4 class="text-white font-bold">Creative Studio</h4>
+            <p class="text-slate-300 text-sm">Designer Portfolio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Item 4 -->
+    <div class="gallery-item business group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800')">
+      <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400" alt="Office Website Demo" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+          <div>
+            <h4 class="text-white font-bold">Tech Startup</h4>
+            <p class="text-slate-300 text-sm">SaaS Landing Page</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Item 5 -->
+    <div class="gallery-item ecommerce group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800')">
+      <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400" alt="Fashion Store Demo" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+          <div>
+            <h4 class="text-white font-bold">Fashion Hub</h4>
+            <p class="text-slate-300 text-sm">Online Boutique</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Item 6 -->
+    <div class="gallery-item portfolio group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800')">
+      <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400" alt="Developer Portfolio Demo" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+          <div>
+            <h4 class="text-white font-bold">Dev Portfolio</h4>
+            <p class="text-slate-300 text-sm">Developer Showcase</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Item 7 -->
+    <div class="gallery-item business group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800')">
+      <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400" alt="Real Estate Demo" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+          <div>
+            <h4 class="text-white font-bold">Estate Pro</h4>
+            <p class="text-slate-300 text-sm">Real Estate Website</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo Item 8 -->
+    <div class="gallery-item ecommerce group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800')">
+      <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Restaurant Demo" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-4">
+          <div>
+            <h4 class="text-white font-bold">Foodie Hub</h4>
+            <p class="text-slate-300 text-sm">Restaurant & Delivery</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="Full size">
+</div>
+
+<!-- Footer -->
+<footer class="bg-slate-900 text-white text-center p-6">
+  <p class="text-slate-400">© 2026 Ishan13 Websites</p>
+</footer>
+
+<script>
+// Mobile Menu Toggle
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+});
+
+// Lightbox Functions
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// Filter functionality
+const filterBtns = document.querySelectorAll('.gallery-filter');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Update active button
+    filterBtns.forEach(b => {
+      b.classList.remove('bg-indigo-600', 'text-white');
+      b.classList.add('bg-white', 'text-slate-700');
+    });
+    btn.classList.remove('bg-white', 'text-slate-700');
+    btn.classList.add('bg-indigo-600', 'text-white');
+
+    // Filter items
+    const filter = btn.dataset.filter;
+    galleryItems.forEach(item => {
+      if (filter === 'all' || item.classList.contains(filter)) {
+        item.style.display = 'block';
+        item.style.animation = 'fadeIn 0.5s ease';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+</body>
+</html>
